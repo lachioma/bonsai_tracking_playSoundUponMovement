@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.7.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:al="clr-namespace:Bonsai.Audio;assembly=Bonsai.Audio"
+                 xmlns:res="clr-namespace:Bonsai.Resources;assembly=Bonsai.System"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:vid="clr-namespace:Bonsai.Video;assembly=Bonsai.Video"
+                 xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
+                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:ipy="clr-namespace:Bonsai.Scripting.IronPython;assembly=Bonsai.Scripting.IronPython"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="al:CreateAudioContext">
+          <al:DeviceName>Generic Software on Speakers / Headphones (Realtek Audio)</al:DeviceName>
+          <al:SampleRate>0</al:SampleRate>
+          <al:Refresh>0</al:Refresh>
+          <al:Position>
+            <al:X>0</al:X>
+            <al:Y>0</al:Y>
+            <al:Z>0</al:Z>
+          </al:Position>
+          <al:Velocity>
+            <al:X>0</al:X>
+            <al:Y>0</al:Y>
+            <al:Z>0</al:Z>
+          </al:Velocity>
+          <al:Direction>
+            <al:X>-0</al:X>
+            <al:Y>-0</al:Y>
+            <al:Z>-1</al:Z>
+          </al:Direction>
+          <al:Up>
+            <al:X>0</al:X>
+            <al:Y>1</al:Y>
+            <al:Z>0</al:Z>
+          </al:Up>
+          <al:Gain>1</al:Gain>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="al:AudioResources">
+          <al:Buffers>
+            <al:BufferConfiguration xsi:type="al:SoundBuffer">
+              <al:Name>leaf1</al:Name>
+              <al:FileName>Practice-Pad-Buzz-Stroke.wav</al:FileName>
+            </al:BufferConfiguration>
+            <al:BufferConfiguration xsi:type="al:SoundBuffer">
+              <al:Name>beep</al:Name>
+              <al:FileName>beep-05.wav</al:FileName>
+            </al:BufferConfiguration>
+          </al:Buffers>
+          <al:Sources>
+            <al:SourceConfiguration>
+              <al:Name>leaf1</al:Name>
+              <al:BufferName>leaf1</al:BufferName>
+              <al:Gain>1</al:Gain>
+              <al:Pitch>1</al:Pitch>
+              <al:Direction>
+                <al:X>0</al:X>
+                <al:Y>0</al:Y>
+                <al:Z>0</al:Z>
+              </al:Direction>
+              <al:Position>
+                <al:X>0</al:X>
+                <al:Y>0</al:Y>
+                <al:Z>0</al:Z>
+              </al:Position>
+              <al:Velocity>
+                <al:X>0</al:X>
+                <al:Y>0</al:Y>
+                <al:Z>0</al:Z>
+              </al:Velocity>
+              <al:Looping>true</al:Looping>
+              <al:Relative>false</al:Relative>
+              <al:State>Initial</al:State>
+            </al:SourceConfiguration>
+            <al:SourceConfiguration>
+              <al:Name>beep</al:Name>
+              <al:BufferName>beep</al:BufferName>
+              <al:Gain>1</al:Gain>
+              <al:Pitch>1</al:Pitch>
+              <al:Direction>
+                <al:X>0</al:X>
+                <al:Y>0</al:Y>
+                <al:Z>0</al:Z>
+              </al:Direction>
+              <al:Position>
+                <al:X>0</al:X>
+                <al:Y>0</al:Y>
+                <al:Z>0</al:Z>
+              </al:Position>
+              <al:Velocity>
+                <al:X>0</al:X>
+                <al:Y>0</al:Y>
+                <al:Z>0</al:Z>
+              </al:Velocity>
+              <al:Looping>true</al:Looping>
+              <al:Relative>false</al:Relative>
+              <al:State>Initial</al:State>
+            </al:SourceConfiguration>
+          </al:Sources>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="res:LoadResources" />
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>ToggleMovement</Name>
+      </Expression>
+      <Expression xsi:type="rx:Condition">
+        <Name>isTrue</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="Equal">
+              <Operand xsi:type="BooleanProperty">
+                <Value>true</Value>
+              </Operand>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="al:PlaySource">
+          <al:DeviceName>Generic Software on Speakers / Headphones (Realtek Audio)</al:DeviceName>
+          <al:SourceName>
+            <al:string>leaf1</al:string>
+          </al:SourceName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="rx:Condition">
+        <Name>isFalse</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="Equal">
+              <Operand xsi:type="BooleanProperty">
+                <Value>false</Value>
+              </Operand>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="al:PauseSource">
+          <al:DeviceName>Generic Software on Speakers / Headphones (Realtek Audio)</al:DeviceName>
+          <al:SourceName>
+            <al:string>leaf1</al:string>
+          </al:SourceName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="al:RewindSource">
+          <al:DeviceName>Generic Software on Speakers / Headphones (Realtek Audio)</al:DeviceName>
+          <al:SourceName>
+            <al:string>leaf1</al:string>
+          </al:SourceName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="vid:MjpegStream">
+          <vid:SourceUrl>http://172.22.112.165/mjpg/1/video.mjpg</vid:SourceUrl>
+          <vid:Login>dailyuser</vid:Login>
+          <vid:Password>zebraFINCH^@</vid:Password>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:CropPolygon">
+          <cv:Regions>
+            <cv:ArrayOfPoint>
+              <cv:Point>
+                <cv:X>185</cv:X>
+                <cv:Y>264</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>185</cv:X>
+                <cv:Y>264</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>185</cv:X>
+                <cv:Y>264</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>185</cv:X>
+                <cv:Y>264</cv:Y>
+              </cv:Point>
+            </cv:ArrayOfPoint>
+            <cv:ArrayOfPoint>
+              <cv:Point>
+                <cv:X>171</cv:X>
+                <cv:Y>154</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>156</cv:X>
+                <cv:Y>8</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>457</cv:X>
+                <cv:Y>8</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>457</cv:X>
+                <cv:Y>154</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>393</cv:X>
+                <cv:Y>249</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>530</cv:X>
+                <cv:Y>290</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>588</cv:X>
+                <cv:Y>499</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>300</cv:X>
+                <cv:Y>548</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>264</cv:X>
+                <cv:Y>357</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>334</cv:X>
+                <cv:Y>262</cv:Y>
+              </cv:Point>
+              <cv:Point>
+                <cv:X>249</cv:X>
+                <cv:Y>260</cv:Y>
+              </cv:Point>
+            </cv:ArrayOfPoint>
+          </cv:Regions>
+          <cv:MaskType>ToZero</cv:MaskType>
+          <cv:FillValue>
+            <cv:Val0>0</cv:Val0>
+            <cv:Val1>0</cv:Val1>
+            <cv:Val2>0</cv:Val2>
+            <cv:Val3>0</cv:Val3>
+          </cv:FillValue>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="cv:VideoWriter">
+            <cv:FileName>data\cam1_.avi</cv:FileName>
+            <cv:Suffix>Timestamp</cv:Suffix>
+            <cv:Buffered>true</cv:Buffered>
+            <cv:Overwrite>true</cv:Overwrite>
+            <cv:FourCC>FMP4</cv:FourCC>
+            <cv:FrameRate>30</cv:FrameRate>
+            <cv:FrameSize>
+              <cv:Width>0</cv:Width>
+              <cv:Height>0</cv:Height>
+            </cv:FrameSize>
+            <cv:ResizeInterpolation>NearestNeighbor</cv:ResizeInterpolation>
+          </Combinator>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="rx:Timestamp" />
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="io:CsvWriter">
+          <io:FileName>data\cam1_.csv</io:FileName>
+          <io:Append>false</io:Append>
+          <io:Overwrite>false</io:Overwrite>
+          <io:Suffix>Timestamp</io:Suffix>
+          <io:IncludeHeader>true</io:IncludeHeader>
+          <io:Selector>Timestamp.TimeOfDay.TotalSeconds</io:Selector>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="cv:HsvThreshold">
+            <cv:Lower>
+              <cv:Val0>0</cv:Val0>
+              <cv:Val1>0</cv:Val1>
+              <cv:Val2>0</cv:Val2>
+              <cv:Val3>0</cv:Val3>
+            </cv:Lower>
+            <cv:Upper>
+              <cv:Val0>81</cv:Val0>
+              <cv:Val1>136</cv:Val1>
+              <cv:Val2>132</cv:Val2>
+              <cv:Val3>0</cv:Val3>
+            </cv:Upper>
+          </Combinator>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:ConvertColor">
+          <cv:Conversion>Rgb2Gray</cv:Conversion>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:Threshold">
+          <cv:ThresholdValue>56</cv:ThresholdValue>
+          <cv:MaxValue>255</cv:MaxValue>
+          <cv:ThresholdType>BinaryInv</cv:ThresholdType>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:FindContours">
+          <cv:Mode>External</cv:Mode>
+          <cv:Method>ChainApproxNone</cv:Method>
+          <cv:Offset>
+            <cv:X>0</cv:X>
+            <cv:Y>0</cv:Y>
+          </cv:Offset>
+          <cv:MinArea>500</cv:MinArea>
+          <cv:MaxArea>2000</cv:MaxArea>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:BinaryRegionAnalysis" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:LargestBinaryRegion" />
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="MemberSelector">
+          <Selector>Centroid.X,Centroid.Y,Orientation,MajorAxisLength,MinorAxisLength,Area</Selector>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="io:CsvWriter">
+          <io:FileName>data\cam1_tracking_.csv</io:FileName>
+          <io:Append>false</io:Append>
+          <io:Overwrite>false</io:Overwrite>
+          <io:Suffix>Timestamp</io:Suffix>
+          <io:IncludeHeader>true</io:IncludeHeader>
+          <io:Selector>Item1,Item2,Item3,Item4,Item5,Item6</io:Selector>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Centroid</Selector>
+      </Expression>
+      <Expression xsi:type="rx:Defer">
+        <Name>Velocity</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Skip">
+                <rx:Count>1</rx:Count>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
+            </Expression>
+            <Expression xsi:type="ipy:PythonTransform">
+              <ipy:Name>Euclidean Distance</ipy:Name>
+              <ipy:Script>import math 
+@returns(float)
+def process(value):
+  dx = value.Item1.X-value.Item2.X
+  dy = value.Item1.Y-value.Item2.Y
+  return math.hypot(dx, dy)</ipy:Script>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="0" To="2" Label="Source1" />
+            <Edge From="1" To="2" Label="Source2" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="rx:BehaviorSubject">
+        <Name>VelCentroid</Name>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Area</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:ConvertColor">
+          <cv:Conversion>Rgb2Gray</cv:Conversion>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:BackgroundSubtraction">
+          <cv:BackgroundFrames>1</cv:BackgroundFrames>
+          <cv:AdaptationRate>1</cv:AdaptationRate>
+          <cv:ThresholdValue>70</cv:ThresholdValue>
+          <cv:ThresholdType>Binary</cv:ThresholdType>
+          <cv:SubtractionMethod>Absolute</cv:SubtractionMethod>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:Sum" />
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Val0</Selector>
+      </Expression>
+      <Expression xsi:type="Divide">
+        <Operand xsi:type="DoubleProperty">
+          <Value>255</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="rx:BehaviorSubject">
+        <Name>FrameDiff_nrPixels</Name>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="al:AudioCapture">
+            <al:DeviceName>Analog (1+2) (RME Fireface UCX)</al:DeviceName>
+            <al:SampleRate>192000</al:SampleRate>
+            <al:SampleFormat>Mono16</al:SampleFormat>
+            <al:BufferLength>100</al:BufferLength>
+          </Combinator>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="al:AudioWriter">
+            <al:FileName>data\mic1_.wav</al:FileName>
+            <al:Suffix>Timestamp</al:Suffix>
+            <al:Buffered>true</al:Buffered>
+            <al:Overwrite>false</al:Overwrite>
+            <al:SampleRate>192000</al:SampleRate>
+          </Combinator>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="rx:Timestamp" />
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="io:CsvWriter">
+          <io:FileName>data\mic01_.csv</io:FileName>
+          <io:Append>false</io:Append>
+          <io:Overwrite>false</io:Overwrite>
+          <io:Suffix>Timestamp</io:Suffix>
+          <io:IncludeHeader>true</io:IncludeHeader>
+          <io:Selector>Timestamp.TimeOfDay.TotalSeconds</io:Selector>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>VelCentroid</Name>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="GroupWorkflow">
+          <Name>Moving average</Name>
+          <Workflow>
+            <Nodes>
+              <Expression xsi:type="WorkflowInput">
+                <Name>Source1</Name>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:WindowCount">
+                  <rx:Count>10</rx:Count>
+                  <rx:Skip>1</rx:Skip>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="rx:SelectMany">
+                <Description />
+                <Workflow>
+                  <Nodes>
+                    <Expression xsi:type="WorkflowInput">
+                      <Name>Source1</Name>
+                    </Expression>
+                    <Expression xsi:type="Combinator">
+                      <Combinator xsi:type="rx:Average" />
+                    </Expression>
+                    <Expression xsi:type="WorkflowOutput" />
+                  </Nodes>
+                  <Edges>
+                    <Edge From="0" To="1" Label="Source1" />
+                    <Edge From="1" To="2" Label="Source1" />
+                  </Edges>
+                </Workflow>
+              </Expression>
+              <Expression xsi:type="WorkflowOutput" />
+            </Nodes>
+            <Edges>
+              <Edge From="0" To="1" Label="Source1" />
+              <Edge From="1" To="2" Label="Source1" />
+              <Edge From="2" To="3" Label="Source1" />
+            </Edges>
+          </Workflow>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Moving median</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:WindowCount">
+                <rx:Count>5</rx:Count>
+                <rx:Skip>1</rx:Skip>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:SelectMany">
+              <Description />
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:ToList" />
+                  </Expression>
+                  <Expression xsi:type="ipy:PythonTransform">
+                    <ipy:Script>@returns(float)
+def process(value):
+  sort = sorted(value)
+  return sort[len(sort)/2]</ipy:Script>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge From="0" To="1" Label="Source1" />
+                  <Edge From="1" To="2" Label="Source1" />
+                  <Edge From="2" To="3" Label="Source1" />
+                </Edges>
+              </Workflow>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="rx:BehaviorSubject">
+        <Name>VelCentroid_filt</Name>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>FrameDiff_nrPixels</Name>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>Moving median</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:WindowCount">
+                <rx:Count>5</rx:Count>
+                <rx:Skip>1</rx:Skip>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:SelectMany">
+              <Description />
+              <Workflow>
+                <Nodes>
+                  <Expression xsi:type="WorkflowInput">
+                    <Name>Source1</Name>
+                  </Expression>
+                  <Expression xsi:type="Combinator">
+                    <Combinator xsi:type="rx:ToList" />
+                  </Expression>
+                  <Expression xsi:type="ipy:PythonTransform">
+                    <ipy:Script>@returns(float)
+def process(value):
+  sort = sorted(value)
+  return sort[len(sort)/2]</ipy:Script>
+                  </Expression>
+                  <Expression xsi:type="WorkflowOutput" />
+                </Nodes>
+                <Edges>
+                  <Edge From="0" To="1" Label="Source1" />
+                  <Edge From="1" To="2" Label="Source1" />
+                  <Edge From="2" To="3" Label="Source1" />
+                </Edges>
+              </Workflow>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="rx:BehaviorSubject">
+        <Name>FrameDiff_nrPixels_filt</Name>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="SubscribeSubject">
+          <Name>VelCentroid_filt</Name>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="SubscribeSubject">
+          <Name>VelCentroid</Name>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="SubscribeSubject">
+          <Name>FrameDiff_nrPixels</Name>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>FrameDiff_nrPixels_filt</Name>
+      </Expression>
+      <Expression xsi:type="GreaterThan">
+        <Operand xsi:type="IntProperty">
+          <Value>150</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:DistinctUntilChanged" />
+      </Expression>
+      <Expression xsi:type="rx:PublishSubject">
+        <Name>ToggleMovement</Name>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="3" To="6" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="10" To="12" Label="Source1" />
+      <Edge From="10" To="14" Label="Source1" />
+      <Edge From="10" To="26" Label="Source1" />
+      <Edge From="12" To="13" Label="Source1" />
+      <Edge From="14" To="15" Label="Source1" />
+      <Edge From="15" To="16" Label="Source1" />
+      <Edge From="16" To="17" Label="Source1" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="18" To="19" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="19" To="22" Label="Source1" />
+      <Edge From="19" To="25" Label="Source1" />
+      <Edge From="20" To="21" Label="Source1" />
+      <Edge From="22" To="23" Label="Source1" />
+      <Edge From="23" To="24" Label="Source1" />
+      <Edge From="26" To="27" Label="Source1" />
+      <Edge From="27" To="28" Label="Source1" />
+      <Edge From="28" To="29" Label="Source1" />
+      <Edge From="29" To="30" Label="Source1" />
+      <Edge From="30" To="31" Label="Source1" />
+      <Edge From="32" To="33" Label="Source1" />
+      <Edge From="32" To="34" Label="Source1" />
+      <Edge From="34" To="35" Label="Source1" />
+      <Edge From="36" To="37" Label="Source1" />
+      <Edge From="37" To="38" Label="Source1" />
+      <Edge From="38" To="39" Label="Source1" />
+      <Edge From="40" To="41" Label="Source1" />
+      <Edge From="41" To="42" Label="Source1" />
+      <Edge From="43" To="47" Label="Source1" />
+      <Edge From="44" To="47" Label="Source2" />
+      <Edge From="45" To="47" Label="Source3" />
+      <Edge From="46" To="47" Label="Source4" />
+      <Edge From="47" To="48" Label="Source1" />
+      <Edge From="48" To="49" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
