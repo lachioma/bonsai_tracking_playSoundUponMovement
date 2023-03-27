@@ -474,8 +474,8 @@
     <VisualizerSettings>
       <TimeSeriesVisualizer>
         <Capacity>640</Capacity>
-        <Min>0</Min>
-        <Max>1.1</Max>
+        <Min>3.5000000000000004</Min>
+        <Max>3.9499999999999997</Max>
         <AutoScale>true</AutoScale>
       </TimeSeriesVisualizer>
     </VisualizerSettings>
@@ -510,7 +510,7 @@
         <Y>3</Y>
       </Location>
       <Size>
-        <Width>599</Width>
+        <Width>598</Width>
         <Height>882</Height>
       </Size>
       <WindowState>Normal</WindowState>
@@ -593,8 +593,8 @@
     <VisualizerSettings>
       <TimeSeriesVisualizer>
         <Capacity>640</Capacity>
-        <Min>0</Min>
-        <Max>1.1</Max>
+        <Min>3.5000000000000004</Min>
+        <Max>3.9499999999999997</Max>
         <AutoScale>true</AutoScale>
       </TimeSeriesVisualizer>
     </VisualizerSettings>
@@ -629,7 +629,7 @@
         <Y>3</Y>
       </Location>
       <Size>
-        <Width>602</Width>
+        <Width>598</Width>
         <Height>882</Height>
       </Size>
       <WindowState>Normal</WindowState>
