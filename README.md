@@ -1,7 +1,7 @@
 # tracking_playSoundUponMovement
 
 
-You can select the mode of mouse tracking out of 4 options, by enabling only 1 of the 4 nodes. Right-click a node to Enable/Disable.
+You can select the mode of mouse tracking out of 4 options, by enabling one of the following 4 nodes. Right-click a node to Enable/Disable.
 - VelCentroid: use brightness threshold for mouse tracking; if velocity of centroid is above V, trigger sound playback; V is set using the node GreaterThan (a reasonable V is 5);
 - VelCentroid_filt: same as before, but at each frame the median of the last 5 velocity points is taken;
 - FrameDiff_nrPixels: use difference across consecutive frames to detect motion; if at least N pixels are different, trigger sound playback. N is set using the node GreaterThan (a reasonable N is ~150 (100-200)).
@@ -32,3 +32,5 @@ In FindContours, use MaxArea and MinArea to define area costranints for the mous
 In BackgroundSubtraction, use the property ThresholdValue to set the gray value (out of 255) used to distinguish foreground and background. ---Not sure what it does yet---
 
 
+![Screenshot 2023-03-27 165814](https://user-images.githubusercontent.com/29898879/228065197-7aea72cd-d0a2-4d3d-a871-cd01eed74aac.png)
+![Screenshot 2023-03-27 165840](https://user-images.githubusercontent.com/29898879/228065230-b5891c94-7979-4fda-9a28-6018b57399c1.png)
