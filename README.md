@@ -1,12 +1,15 @@
 # tracking_playSoundUponMovement
 
 
-You can select the mode of mouse tracking out of 4 options, by enabling one of the following 4 nodes. Right-click a node to Enable/Disable.
+You can select the mode of mouse tracking out of 4 options, by enabling one of the following 4 nodes (Right-click a node to Enable/Disable).
+I recommend using either VelCentroid_filt or FrameDiff_nrPixels_filt. If there is little contrast between the mouse and flooring (e.g. leaves), use FrameDiff_nrPixels_filt.
+
 - VelCentroid: use brightness threshold for mouse tracking; if velocity of centroid is above V, trigger sound playback; V is set using the node GreaterThan (a reasonable V is 5);
 - VelCentroid_filt: same as before, but at each frame the median of the last 5 velocity points is taken;
 - FrameDiff_nrPixels: use difference across consecutive frames to detect motion; if at least N pixels are different, trigger sound playback. N is set using the node GreaterThan (a reasonable N is ~150 (100-200)).
 - FrameDiff_nrPixels_filt: same as before, but at each frame the median of the last 5 velocity points is taken.
 
+If you want to save video and audio recordings, just enable the corresponding nodes VideoWriter, AuioWriter, CsvWriter, Timestamp. Files will be saved in the subfolder /data/.
 
 Set sound card using CreateAudioContext.
 
@@ -25,7 +28,7 @@ To draw/modify the ROI, first run the routine; then select CropPolygon and click
 - use Ctrl+Z to undo;
 Close the window "Regions" when you are done.
 
-In Threshold, use the property ThresholdValue to set the gray value (out of 255) below which we look for contours, i.e. the mouse must be darker than this value and ideally only the mouse.
+In Threshold, use the property ThresholdValue to set the gray value (out of 255) below which we look for contours, i.e. the mouse must be darker than this value and ideally only the mouse. A reasonable value is 55-60.
 
 In FindContours, use MaxArea and MinArea to define area costranints for the mouse ROI that will be detected at each frame.
 
