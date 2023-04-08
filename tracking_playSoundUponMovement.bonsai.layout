@@ -189,8 +189,8 @@
   <DialogSettings>
     <Visible>true</Visible>
     <Location>
-      <X>373</X>
-      <Y>23</Y>
+      <X>383</X>
+      <Y>31</Y>
     </Location>
     <Size>
       <Width>336</Width>
@@ -301,8 +301,8 @@
   <DialogSettings>
     <Visible>true</Visible>
     <Location>
-      <X>323</X>
-      <Y>285</Y>
+      <X>384</X>
+      <Y>304</Y>
     </Location>
     <Size>
       <Width>336</Width>
@@ -401,8 +401,8 @@
   <DialogSettings>
     <Visible>true</Visible>
     <Location>
-      <X>58</X>
-      <Y>1055</Y>
+      <X>1256</X>
+      <Y>51</Y>
     </Location>
     <Size>
       <Width>415</Width>
@@ -415,7 +415,7 @@
         <XMin>0</XMin>
         <XMax>19200</XMax>
         <YMin>-30</YMin>
-        <YMax>40</YMax>
+        <YMax>30</YMax>
         <AutoScaleX>true</AutoScaleX>
         <AutoScaleY>true</AutoScaleY>
         <SelectedPage>0</SelectedPage>
@@ -576,8 +576,8 @@
   <DialogSettings>
     <Visible>true</Visible>
     <Location>
-      <X>89</X>
-      <Y>887</Y>
+      <X>705</X>
+      <Y>32</Y>
     </Location>
     <Size>
       <Width>416</Width>
@@ -589,7 +589,7 @@
       <TimeSeriesVisualizer>
         <Capacity>640</Capacity>
         <Min>0</Min>
-        <Max>16</Max>
+        <Max>499.99999999999994</Max>
         <AutoScale>true</AutoScale>
       </TimeSeriesVisualizer>
     </VisualizerSettings>
@@ -731,8 +731,8 @@
   <DialogSettings>
     <Visible>true</Visible>
     <Location>
-      <X>87</X>
-      <Y>623</Y>
+      <X>705</X>
+      <Y>305</Y>
     </Location>
     <Size>
       <Width>415</Width>
