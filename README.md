@@ -29,7 +29,7 @@ In Threshold, use the property ThresholdValue to set the gray value (out of 255)
 
 In FindContours, use MaxArea and MinArea to define area costranints for the mouse ROI that will be detected at each frame.
 
-In BackgroundSubtraction, use the property ThresholdValue to set the gray value (out of 255) used to distinguish foreground and background. ---Not sure what it does yet---
+In BackgroundSubtraction, use the property ThresholdValue to set the gray value (out of 255) used to distinguish foreground and background: count only the pixels that have a delta gray value between consecutive frames above the ThresholdValue.
 
 
 ![Screenshot 2023-03-27 165814](https://user-images.githubusercontent.com/29898879/228065197-7aea72cd-d0a2-4d3d-a871-cd01eed74aac.png)
